@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		libkgapi
 Summary:	libkgapi
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d786bbb44bd559a97d3c8ac823b2db07
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	38abeeeb41722f7fd779e7e75806cf74
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -26,9 +26,9 @@ BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	gettext-devel
-BuildRequires:	ka5-kcalcore-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-kio-devel >= %{kframever}
 BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
@@ -82,7 +82,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}_qt.lang
 %defattr(644,root,root,755)
-/etc/xdg/libkgapi.categories
 %attr(755,root,root) %ghost %{_libdir}/libKPimGAPIBlogger.so.5
 %attr(755,root,root) %{_libdir}/libKPimGAPIBlogger.so.5.*.*
 %attr(755,root,root) %ghost %{_libdir}/libKPimGAPICalendar.so.5
@@ -101,6 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKPimGAPITasks.so.5.*.*
 %attr(755,root,root) %ghost %{_libdir}/sasl2/libkdexoauth2.so.3
 %attr(755,root,root) %{_libdir}/sasl2/libkdexoauth2.so.3.*.*
+%{_datadir}/qlogging-categories5/libkgapi.categories
 
 %files devel
 %defattr(644,root,root,755)
