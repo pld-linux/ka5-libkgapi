@@ -44,6 +44,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 LibKGAPI is a KDE-based library for accessing various Google services
 via their public API.
 
+%description -l pl.UTF-8
+LibKGAPI is biblioteką KDE do dostępu do różnych usług Google'a
+korzystając z ich publicznego API.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
