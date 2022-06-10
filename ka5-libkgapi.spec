@@ -1,10 +1,14 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
+%bcond_without	webengine	# build without webengine
 %define		kdeappsver	22.04.2
 %define		kframever	5.56.0
-%define		qtver		5.9.0
+%define		qtver		5.15.0
 %define		kaname		libkgapi
+%ifarch x32
+%undefine	with_webengine
+%endif
 Summary:	libkgapi
 Name:		ka5-%{kaname}
 Version:	22.04.2
@@ -22,8 +26,8 @@ BuildRequires:	Qt5PrintSupport-devel >= 5.11.1
 BuildRequires:	Qt5Qml-devel >= 5.11.1
 BuildRequires:	Qt5Quick-devel >= 5.11.1
 BuildRequires:	Qt5Test-devel
-BuildRequires:	Qt5WebChannel-devel >= 5.11.1
-BuildRequires:	Qt5WebEngine-devel >= 5.11.1
+%{?with_webengine:BuildRequires:	Qt5WebChannel-devel >= 5.11.1}
+%{?with_webengine:BuildRequires:	Qt5WebEngine-devel >= 5.11.1}
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
@@ -37,11 +41,11 @@ BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt5-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-ExclusiveArch:	i686  %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
