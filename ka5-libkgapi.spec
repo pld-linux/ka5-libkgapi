@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %bcond_without	webengine	# build without webengine
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkgapi
@@ -11,12 +11,12 @@
 %endif
 Summary:	libkgapi
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c60743540d22ffa29200c4d33dc8e516
+# Source0-md5:	96c986c1f7af7b87500462a9c7284a9e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -100,45 +100,46 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}_qt.lang
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKPimGAPIBlogger.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPIBlogger.so.5.*.*
-%ghost %{_libdir}/libKPimGAPICalendar.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPICalendar.so.5.*.*
-%ghost %{_libdir}/libKPimGAPIContacts.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPIContacts.so.5.*.*
-%ghost %{_libdir}/libKPimGAPICore.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPICore.so.5.*.*
-%ghost %{_libdir}/libKPimGAPIDrive.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPIDrive.so.5.*.*
-%ghost %{_libdir}/libKPimGAPILatitude.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPILatitude.so.5.*.*
-%ghost %{_libdir}/libKPimGAPIMaps.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPIMaps.so.5.*.*
-%ghost %{_libdir}/libKPimGAPITasks.so.5
-%attr(755,root,root) %{_libdir}/libKPimGAPITasks.so.5.*.*
-%{_libdir}/sasl2/libkdexoauth2.so.3
-%attr(755,root,root) %{_libdir}/sasl2/libkdexoauth2.so.3.*.*
 %{_datadir}/qlogging-categories5/libkgapi.categories
+%ghost %{_libdir}/libKPim5GAPIBlogger.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIBlogger.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPICalendar.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPICalendar.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPICore.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPICore.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIDrive.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIDrive.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPILatitude.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPILatitude.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIMaps.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIMaps.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIPeople.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIPeople.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPITasks.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPITasks.so.*.*.*
+%ghost %{_libdir}/sasl2/libkdexoauth2.so.3
+%attr(755,root,root) %{_libdir}/sasl2/libkdexoauth2.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KPim/KGAPI
-%{_includedir}/KPim/kgapi_version.h
-%{_libdir}/cmake/KPimGAPI
-%{_libdir}/libKPimGAPIBlogger.so
-%{_libdir}/libKPimGAPICalendar.so
-%{_libdir}/libKPimGAPIContacts.so
-%{_libdir}/libKPimGAPICore.so
-%{_libdir}/libKPimGAPIDrive.so
-%{_libdir}/libKPimGAPIMaps.so
-%{_libdir}/libKPimGAPILatitude.so
-%{_libdir}/libKPimGAPITasks.so
-%{_libdir}/sasl2/libkdexoauth2.so
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPIBlogger.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPICalendar.pri
-%{_libdir}/qt5/mkspecs/modules/qt_KGAPIContacts.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPICore.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPIDrive.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPILatitude.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPIMaps.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KGAPITasks.pri
+%{_includedir}/KPim5/KGAPI
+%{_includedir}/KPim5/kgapi_version.h
+%{_libdir}/cmake/KPim5GAPI
+%{_libdir}/cmake/KPimGAPI
+%{_libdir}/libKPim5GAPIBlogger.so
+%{_libdir}/libKPim5GAPICalendar.so
+%{_libdir}/libKPim5GAPICore.so
+%{_libdir}/libKPim5GAPIDrive.so
+%{_libdir}/libKPim5GAPILatitude.so
+%{_libdir}/libKPim5GAPIMaps.so
+%{_libdir}/libKPim5GAPIPeople.so
+%{_libdir}/libKPim5GAPITasks.so
+%{_libdir}/sasl2/libkdexoauth2.so
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPIPeople.pri
