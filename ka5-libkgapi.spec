@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %bcond_without	webengine	# build without webengine
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkgapi
@@ -11,37 +11,37 @@
 %endif
 Summary:	libkgapi
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5e3b1afce8c9bd0e19b06e00116560b3
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	fbf0dc3e0a826fe076548c15a75d5552
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= 5.11.1
-BuildRequires:	Qt6Network-devel
-BuildRequires:	Qt6Positioning-devel >= 5.11.1
-BuildRequires:	Qt6PrintSupport-devel >= 5.11.1
-BuildRequires:	Qt6Qml-devel >= 5.11.1
-BuildRequires:	Qt6Quick-devel >= 5.11.1
-BuildRequires:	Qt6Test-devel
-%{?with_webengine:BuildRequires:	Qt6WebChannel-devel >= 5.11.1}
-%{?with_webengine:BuildRequires:	Qt6WebEngine-devel >= 5.11.1}
-BuildRequires:	Qt6Widgets-devel
-BuildRequires:	Qt6Xml-devel
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= 5.11.1
+BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5Positioning-devel >= 5.11.1
+BuildRequires:	Qt5PrintSupport-devel >= 5.11.1
+BuildRequires:	Qt5Qml-devel >= 5.11.1
+BuildRequires:	Qt5Quick-devel >= 5.11.1
+BuildRequires:	Qt5Test-devel
+%{?with_webengine:BuildRequires:	Qt5WebChannel-devel >= 5.11.1}
+%{?with_webengine:BuildRequires:	Qt5WebEngine-devel >= 5.11.1}
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 3.20
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf6-kcalendarcore-devel >= %{kframever}
-BuildRequires:	kf6-kcontacts-devel >= %{kframever}
-BuildRequires:	kf6-kio-devel >= %{kframever}
-BuildRequires:	kf6-kwallet-devel >= %{kframever}
-BuildRequires:	kf6-kwindowsystem-devel >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-kwallet-devel >= %{kframever}
+BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	qt6-linguist >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt5-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -98,36 +98,45 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}_qt.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libKPim6GAPIBlogger.so.*.*
-%ghost %{_libdir}/libKPim6GAPIBlogger.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPICalendar.so.*.*
-%ghost %{_libdir}/libKPim6GAPICalendar.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPICore.so.*.*
-%ghost %{_libdir}/libKPim6GAPICore.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPIDrive.so.*.*
-%ghost %{_libdir}/libKPim6GAPIDrive.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPILatitude.so.*.*
-%ghost %{_libdir}/libKPim6GAPILatitude.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPIMaps.so.*.*
-%ghost %{_libdir}/libKPim6GAPIMaps.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPIPeople.so.*.*
-%ghost %{_libdir}/libKPim6GAPIPeople.so.6
-%attr(755,root,root) %{_libdir}/libKPim6GAPITasks.so.*.*
-%ghost %{_libdir}/libKPim6GAPITasks.so.6
+%{_datadir}/qlogging-categories5/libkgapi.categories
+%ghost %{_libdir}/libKPim5GAPIBlogger.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIBlogger.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPICalendar.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPICalendar.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPICore.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPICore.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIDrive.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIDrive.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPILatitude.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPILatitude.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIMaps.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIMaps.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPIPeople.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPIPeople.so.*.*.*
+%ghost %{_libdir}/libKPim5GAPITasks.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GAPITasks.so.*.*.*
 %ghost %{_libdir}/sasl2/libkdexoauth2.so.3
-%attr(755,root,root) %{_libdir}/sasl2/libkdexoauth2.so.*.*
-%{_datadir}/qlogging-categories6/libkgapi.categories
+%attr(755,root,root) %{_libdir}/sasl2/libkdexoauth2.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KPim6/KGAPI
-%{_libdir}/cmake/KPim6GAPI
-%{_libdir}/libKPim6GAPIBlogger.so
-%{_libdir}/libKPim6GAPICalendar.so
-%{_libdir}/libKPim6GAPICore.so
-%{_libdir}/libKPim6GAPIDrive.so
-%{_libdir}/libKPim6GAPILatitude.so
-%{_libdir}/libKPim6GAPIMaps.so
-%{_libdir}/libKPim6GAPIPeople.so
-%{_libdir}/libKPim6GAPITasks.so
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPIBlogger.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPICalendar.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPICore.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPIDrive.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPILatitude.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPIMaps.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPITasks.pri
+%{_includedir}/KPim5/KGAPI
+%{_libdir}/cmake/KPim5GAPI
+%{_libdir}/cmake/KPimGAPI
+%{_libdir}/libKPim5GAPIBlogger.so
+%{_libdir}/libKPim5GAPICalendar.so
+%{_libdir}/libKPim5GAPICore.so
+%{_libdir}/libKPim5GAPIDrive.so
+%{_libdir}/libKPim5GAPILatitude.so
+%{_libdir}/libKPim5GAPIMaps.so
+%{_libdir}/libKPim5GAPIPeople.so
+%{_libdir}/libKPim5GAPITasks.so
 %{_libdir}/sasl2/libkdexoauth2.so
+%{_libdir}/qt5/mkspecs/modules/qt_KGAPIPeople.pri
